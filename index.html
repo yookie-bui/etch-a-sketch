@@ -8,8 +8,18 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <div id="container">
-    </div>
+    <h1>Etch A Sketch</h1>
+    <h2>Click inside grid to toggle pen</h2>
+    <section id="interface">
+        <div id="container"></div>
+        <div id="toolbar">
+            <button type="button" id="color" class="user-interface"></button>
+            <input type="range" id="grid" name="grid" min="4" max="16" step="2" value="4">
+            <button type="button" id="clear" class="user-interface"></button>
+        </div>
+    </section>
+    
+
     <script src="app.js"></script>
 </body>
 </html>
