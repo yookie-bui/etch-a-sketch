@@ -1,6 +1,7 @@
 * {
     background-color: white;
 }
+
 body {
     display: flex;
     flex-direction: column;
@@ -20,7 +21,7 @@ body {
 button {
     border-radius: 50%;
     border: none;
-    background-color: #999999;
+    background-color: #828282;
     width: 70px;
     height: 70px;
     padding: 2em;
@@ -50,6 +51,10 @@ button:hover {
     padding-left: 10px;
     padding-right: 10px;
     background-color: #023E8A;
+}
+
+#color {
+    background-color: red;
 }
 
 .row {
