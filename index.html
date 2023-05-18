@@ -8,17 +8,25 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <h1 style="background-color: #023E8A; color: white;">Etch A Sketch</h1>
-    <h2 style="background-color: #023E8A; color: white;">Click inside grid to toggle pen</h2>
-    <section id="interface">
-        <div id="container"></div>
-        <div id="toolbar">
-            <button type="button" id="color" class="user-interface"></button>
-            <input type="range" id="grid" name="grid" min="4" max="16" step="2" value="4">
-            <button type="button" id="clear" class="user-interface"></button>
+    <div>
+        <div id="board-header">
+            <h1>Etch A Sketch</h1>
+            <h2>Click inside grid to toggle pen</h2>
         </div>
-    </section>
-    
+        <section id="interface">
+            <div id="container"></div>
+            <div id="toolbar">
+                <button type="button" id="color" class="user-interface"></button>
+                <input type="range" id="grid" name="grid" min="4" max="16" step="2" value="4">
+                <button type="button" id="clear" class="user-interface"></button>
+            </div>
+        </section>
+    </div>
+    <div id="color-picker">
+        <canvas id="color-canvas"></canvas>
+        <canvas id="color-slider"></canvas>
+        <!-- <input type="range" name="color-slider" id="color-slider" min="0" max="100" step="1"> -->
+    </div>
 
     <script src="app.js"></script>
 </body>

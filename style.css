@@ -33,6 +33,24 @@ button:hover {
     background-color: #F2F8F7 ;
 }
 
+h1, h2 {
+    margin: 0;
+    text-align: center;
+    background-color: #023E8A;
+    color: white;
+    padding: 10px;
+}
+
+canvas {
+    width: 500px;
+    height: 150px;
+}
+
+#board-header {
+    padding-bottom: 10px;
+    background-color: #023E8A;
+}
+
 #container {
     display: flex;
     flex-direction: column;
@@ -56,6 +74,32 @@ button:hover {
 #color {
     background-color: red;
 }
+
+#color-picker {
+    display: flex;
+    flex-direction: column;
+}
+
+#color-slider {
+    height: 100px;
+}
+
+/* #color-slider {
+    background: linear-gradient(90deg, #FF0000 10%, #FF8000 15%, #FFFF00 25%, #80FF00 30%, #00FF00 40%, #00FF80 50%, #00FFFF 55%, #0080FF 65%, #0000FF 75%,#7F00FF 80%, #FF00FF 85%, #FF007F 90%);
+    width: 508px;
+    height: 15px;
+    outline: none;
+    border-radius: 10px;
+}
+
+#color-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: blue;
+} */
 
 .row {
     display: flex;

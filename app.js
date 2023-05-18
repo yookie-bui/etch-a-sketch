@@ -2,12 +2,30 @@ const sketchBoard = document.getElementById('container');
 const grid = document.getElementById('grid');
 const color = document.getElementById('color');
 const resetButton = document.getElementById('clear');
+const colorSlider = document.getElementById('color-slider');
+const sliderCtx = colorSlider.getContext('2d');
 
 var gridElems = document.getElementsByClassName('square');
 var isStartUp = true;
 var isPainting = false;
 
 let gridSize = grid.value;
+
+const sliderGradient = sliderCtx.createLinearGradient(0, 0, 520, 25);
+/* background: linear-gradient(90deg, #FF0000 10%, #FF8000 15%, #FFFF00 25%, #80FF00 30%, #00FF00 40%, #00FF80 50%, #00FFFF 55%, #0080FF 65%, #0000FF 75%,#7F00FF 80%, #FF00FF 85%, #FF007F 90%); */
+sliderGradient.addColorStop(0, "#FF0000");
+sliderGradient.addColorStop(0.1, "#FF8000");
+sliderGradient.addColorStop(0.15, "#FFFF00");
+sliderGradient.addColorStop(0.25, "#00FF00");
+sliderGradient.addColorStop(0.35, "#00FFFF");
+sliderGradient.addColorStop(0.4, "#0080FF");
+sliderGradient.addColorStop(0.45, "#0000FF");
+sliderGradient.addColorStop(0.55, "#7F00FF");
+sliderGradient.addColorStop(0.6, "#FF00FF");
+sliderGradient.addColorStop(0.65, "#FF007F");
+
+sliderCtx.fillStyle = sliderGradient;
+sliderCtx.fillRect(0, 100, 520, 40);
 
 const createGrid = (gridSize) => {
     for (let i = 0; i < gridSize; i++) {
@@ -67,6 +85,10 @@ const clearGrid = () => {
     Array.from(gridElems).forEach(gridElem => {
         gridElem.style.backgroundColor = 'white';
     })
+}
+
+const updateColor = () => {
+    let color = window.getComputedStyle(colorSlider).getPropertyPriority
 }
 
 startUpScript(gridSize);
