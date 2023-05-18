@@ -3,7 +3,9 @@ const grid = document.getElementById('grid');
 const color = document.getElementById('color');
 const resetButton = document.getElementById('clear');
 const colorSlider = document.getElementById('color-slider');
+const colorCanvas = document.getElementById('color-canvas');
 const sliderCtx = colorSlider.getContext('2d');
+const canvasCtx = colorCanvas.getContext('2d');
 
 var gridElems = document.getElementsByClassName('square');
 var isStartUp = true;
@@ -12,7 +14,6 @@ var isPainting = false;
 let gridSize = grid.value;
 
 const sliderGradient = sliderCtx.createLinearGradient(0, 0, 520, 25);
-/* background: linear-gradient(90deg, #FF0000 10%, #FF8000 15%, #FFFF00 25%, #80FF00 30%, #00FF00 40%, #00FF80 50%, #00FFFF 55%, #0080FF 65%, #0000FF 75%,#7F00FF 80%, #FF00FF 85%, #FF007F 90%); */
 sliderGradient.addColorStop(0, "#FF0000");
 sliderGradient.addColorStop(0.1, "#FF8000");
 sliderGradient.addColorStop(0.15, "#FFFF00");
