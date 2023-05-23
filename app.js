@@ -6,7 +6,6 @@ const resetButton = document.getElementById('clear');
 var gridElems = document.getElementsByClassName('square');
 var isStartUp = true;
 var isPainting = false;
-// var currentColor = window.getComputedStyle(color).getPropertyValue('background-color');
 
 let gridSize = grid.value;
 
