@@ -2,31 +2,13 @@ const sketchBoard = document.getElementById('container');
 const grid = document.getElementById('grid');
 const color = document.getElementById('color');
 const resetButton = document.getElementById('clear');
-const colorSlider = document.getElementById('color-slider');
-const colorCanvas = document.getElementById('color-canvas');
-const sliderCtx = colorSlider.getContext('2d');
-const canvasCtx = colorCanvas.getContext('2d');
 
 var gridElems = document.getElementsByClassName('square');
 var isStartUp = true;
 var isPainting = false;
+// var currentColor = window.getComputedStyle(color).getPropertyValue('background-color');
 
 let gridSize = grid.value;
-
-const sliderGradient = sliderCtx.createLinearGradient(0, 0, 520, 25);
-sliderGradient.addColorStop(0, "#FF0000");
-sliderGradient.addColorStop(0.1, "#FF8000");
-sliderGradient.addColorStop(0.15, "#FFFF00");
-sliderGradient.addColorStop(0.25, "#00FF00");
-sliderGradient.addColorStop(0.35, "#00FFFF");
-sliderGradient.addColorStop(0.4, "#0080FF");
-sliderGradient.addColorStop(0.45, "#0000FF");
-sliderGradient.addColorStop(0.55, "#7F00FF");
-sliderGradient.addColorStop(0.6, "#FF00FF");
-sliderGradient.addColorStop(0.65, "#FF007F");
-
-sliderCtx.fillStyle = sliderGradient;
-sliderCtx.fillRect(0, 100, 520, 40);
 
 const createGrid = (gridSize) => {
     for (let i = 0; i < gridSize; i++) {
@@ -50,14 +32,37 @@ const createGrid = (gridSize) => {
     isPainting = false;
 }
 
+const rgbToHex = (rgb) => {
+    let hex = [];
+    let hexColor = "";
+    for (let element of rgb) {
+        hex.push(parseInt(element).toString(16));
+    }
+    hexColor = `#${hex[0]}${hex[1]}${hex[2]}`;
+    return hexColor;
+}
+
+const hexToRGB = (hex, a) => {
+    let r = parseInt(hex.slice(1, 3), 16);
+    let g = parseInt(hex.slice(3, 5), 16);
+    let b = parseInt(hex.slice(5, 7), 16);
+    console.log(r);
+    return `rgb(${r}, ${g}, ${b}, ${a})`;
+}
+
 const togglePen = (grid) => {
     isPainting = !isPainting;
     paintGrid(grid);
     
 }
 
-const paintGrid = (grid) => {
+const getColor = () => {
     let paint = window.getComputedStyle(color).getPropertyValue('background-color');
+    return paint;
+}
+
+const paintGrid = (grid) => {
+    let paint = getColor();
     if (isPainting) {
         grid.style.backgroundColor = paint;
     }
@@ -78,9 +83,12 @@ const startUpScript = (gridSize) => {
     if (isStartUp ) {
         isStartUp = false;
         createGrid(gridSize);
+        let paint = getColor();
+        let rgb = paint.match(/\d+/gm);
+        let hex = rgbToHex(rgb);
+        color.value = hex;
     }   
 }
-
 
 const clearGrid = () => {
     Array.from(gridElems).forEach(gridElem => {
@@ -88,9 +96,7 @@ const clearGrid = () => {
     })
 }
 
-const updateColor = () => {
-    let color = window.getComputedStyle(colorSlider).getPropertyPriority
-}
+
 
 startUpScript(gridSize);
 
@@ -100,5 +106,9 @@ grid.addEventListener('input', ()=>{
 })
 
 resetButton.addEventListener('click', clearGrid);
+color.addEventListener('input', ()=> {
+    color.setAttribute('style', `background-color: ${color.value}`);
+})
+
 
 
